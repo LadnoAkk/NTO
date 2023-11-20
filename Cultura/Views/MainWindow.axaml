@@ -15,10 +15,10 @@
         <TabItem Header="Развлекательное">
           <TabControl>
             <TabItem Header="Мероприятие">
-                 <pages:Events/>
+              <ContentControl Name="EventCCR"/>
             </TabItem>
             <TabItem Header="Тип Мероприятия">
-                <pages:EventTypes/>
+              <ContentControl Name="TypeCCR"/>
             </TabItem>
           </TabControl>
         </TabItem>
@@ -30,10 +30,10 @@
         <TabItem Header="Просветительское">
           <TabControl>
             <TabItem Header="Мероприятие">
-              <pages:Events/>
+              <ContentControl Name="EventCCP"/>
             </TabItem>
             <TabItem Header="Тип Мероприятия">
-              <pages:EventTypes/>
+              <ContentControl Name="TypeCCP"/>
             </TabItem>
           </TabControl>
         </TabItem>

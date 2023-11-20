@@ -7,11 +7,11 @@ using static Cultura.Helper.Connect;
 
 namespace Cultura.Windows
 {
-    public partial class AddEventWindow : Window
+    public partial class AddEventTypeWindow : Window
     {
         private long _id;
 
-        public AddEventWindow(long id)
+        public AddEventTypeWindow(long id)
         {
             InitializeComponent();
             _id = id;
@@ -27,39 +27,27 @@ namespace Cultura.Windows
 
         private void OkBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            try
+            var ev = (EventType)MainGrid.DataContext;
+            if (_id == -1)
             {
-                var ev = (Event)MainGrid.DataContext;
-                ev.Data = DateCdp.SelectedDate.Value.ToString("d");
-                if (_id == -1)
-                {
-                    context.Events.Add(ev);
-                }
-                context.SaveChanges();
-                Close();
+                context.EventTypes.Add(ev);
             }
-            catch (Exception ex)
-            {
-
-            }
+            context.SaveChanges();
+            Close();
         }
 
         private void LoadData()
         {
-            context.Events.Load();
             context.EventTypes.Load();
-            TypeNameCb.ItemsSource = context.EventTypes;
 
             if (_id != -1)
             {
-                var ev = context.Events.First(el => el.Id == _id);
-                DateCdp.SelectedDate = Convert.ToDateTime(ev.Data);
+                var ev = context.EventTypes.First(el => el.Id == _id);
                 MainGrid.DataContext = ev;
-                TypeNameCb.SelectedIndex = 0;
             }
             else
             {
-                MainGrid.DataContext = new Event();
+                MainGrid.DataContext = new EventType();
             }
 
         }

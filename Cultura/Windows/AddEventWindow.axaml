@@ -7,7 +7,7 @@
         Title="AddEventWindow">
   <UniformGrid Columns="2" Name="MainGrid" Height="300">
     <Label Content="Type" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-    <ComboBox Name="TypeNameCb" SelectedItem="Type"
+    <ComboBox Name="TypeNameCb" SelectedItem="{Binding Type}"
               HorizontalAlignment="Left" VerticalAlignment="Center">
       <ComboBox.ItemTemplate>
         <DataTemplate>
