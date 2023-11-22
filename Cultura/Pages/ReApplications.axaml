@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Cultura.Pages.ReApplications">
+	<Grid RowDefinitions="100, *, 100">
+		<DataGrid Name="ReApplicationsDG" Grid.Row="1" IsReadOnly="True">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+				<DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
+				<DataGridTextColumn Header="Event" Binding="{Binding Event.Description}"/>
+				<DataGridTextColumn Header="Work Type" Binding="{Binding Work.Name}"/>
+				<DataGridTextColumn Header="Space Name" Binding="{Binding Space.Name}"/>
+				<DataGridTextColumn Header="Timing" Binding="{Binding Timing}"/>
+				<DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+				<DataGridTextColumn Header="Status" Binding="{Binding Status.Name}"/>
+			</DataGrid.Columns>
+		</DataGrid>
+	</Grid>
+</UserControl>

@@ -3,14 +3,13 @@ using Cultura.data;
 using Cultura.Helper;
 using Cultura.Windows;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using static Cultura.Helper.Connect;
 
 namespace Cultura.Pages
 {
-    public partial class EventTypes : UserControl
+    public partial class Spaces : UserControl
     {
-        public EventTypes()
+        public Spaces()
         {
             InitializeComponent();
             LoadData();
@@ -19,48 +18,40 @@ namespace Cultura.Pages
             EditBtn.Click += EditBtn_Click;
         }
 
-        public void Reload()
-        {
-            LoadData();
-        }
-
         private async void EditBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            var selected = EventTypesDG.SelectedItem as EventType;
+            var selected = SpacesDG.SelectedItem as Space;
             if (selected != null)
             {
-                AddEventTypeWindow addEventTypeWindow = new AddEventTypeWindow(selected.Id);
-                await addEventTypeWindow.ShowDialog(MainMainWindow);
-                EvType1.Reload();
-                EvType2.Reload();
+                AddSpaceWindow AddSpaceWindow = new AddSpaceWindow(selected.Id);
+                await AddSpaceWindow.ShowDialog(MainMainWindow);
+                LoadData();
             }
         }
 
         private async void AddBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            AddEventTypeWindow addEventTypeWindow = new AddEventTypeWindow(-1);
-            await addEventTypeWindow.ShowDialog(MainMainWindow);
-            EvType1.Reload();
-            EvType2.Reload();
+            AddSpaceWindow AddSpaceWindow = new AddSpaceWindow(-1);
+            await AddSpaceWindow.ShowDialog(MainMainWindow);
+            LoadData();
         }
 
         private async void DeleteBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             if (await ShowQuestion("Вы уверены?") == MsBox.Avalonia.Enums.ButtonResult.Ok)
             {
-                var selected = EventTypesDG.SelectedItem as EventType;
-                Connect.context.EventTypes.Remove(selected);
+                var selected = SpacesDG.SelectedItem as Space;
+                Connect.context.Spaces.Remove(selected);
                 Connect.context.SaveChanges();
-                EvType1.Reload();
-                EvType2.Reload();
+                LoadData();
             }
         }
 
         private void LoadData()
         {
-            context.EventTypes.Load();
-            EventTypesDG.ItemsSource = null;
-            EventTypesDG.ItemsSource = context.EventTypes;
+            context.Spaces.Load();
+            SpacesDG.ItemsSource = null;
+            SpacesDG.ItemsSource = context.Spaces;
         }
     }
 }

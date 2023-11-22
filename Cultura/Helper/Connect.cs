@@ -7,6 +7,7 @@ using Avalonia.Controls;
 using Cultura.data;
 using MsBox.Avalonia;
 using Cultura.Pages;
+using Microsoft.CodeAnalysis.CSharp;
 
 namespace Cultura.Helper
 {
@@ -14,6 +15,9 @@ namespace Cultura.Helper
     {
         public static CulturnaBasaContext context = new CulturnaBasaContext();
         public static Window MainMainWindow = null;
+
+        public static Applications OrigApp;
+        public static ReApplications OrigReApp;
 
         public static Events Ev1;
         public static Events Ev2;

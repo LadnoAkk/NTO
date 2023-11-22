@@ -1,0 +1,17 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Cultura.Windows.AddWorkTypeWindow"
+        Title="AddWorkTypeWindow">
+	<UniformGrid Columns="2" Name="MainGrid" Height="300">
+		<Label Content="Name" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+		<TextBox HorizontalAlignment="Left" VerticalAlignment="Center"
+				 Text="{Binding Name}"/>
+		<Button Name="OkBtn" Content="Ok" Width="70" Height="30" HorizontalContentAlignment="Center"
+				HorizontalAlignment="Right"/>
+		<Button Name="DiscardBtn" Content="Discard" Width="70" Height="30" HorizontalContentAlignment="Center"
+				HorizontalAlignment="Left"/>
+	</UniformGrid>
+</Window>

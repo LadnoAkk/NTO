@@ -13,5 +13,7 @@ public partial class Event
 
     public long TypeId { get; set; }
 
+    public virtual ICollection<Application> Applications { get; } = new List<Application>();
+
     public virtual EventType Type { get; set; } = null!;
 }

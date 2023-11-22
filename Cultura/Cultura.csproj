@@ -28,6 +28,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Pages\WorkTypes.axaml.cs">
+      <DependentUpon>WorkTypes.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Database\CulturnaBasa">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

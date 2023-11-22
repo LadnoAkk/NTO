@@ -24,5 +24,20 @@ public partial class MainWindow : Window
         TypeCCR.Content = evType1;
         EvType1 = evType;
         EvType2 = evType1;
+
+        var sp = new Spaces();
+        SpaceCCP.Content = sp;
+
+        var app = new Applications();
+        ApplicationCCP.Content = app;
+
+        var reApp = new ReApplications();
+        WorkspaceCCP.Content = reApp;
+
+        var work = new WorkTypes();
+        WorkCCP.Content = work;
+
+        OrigApp = app;
+        OrigReApp = reApp;
     }
 }

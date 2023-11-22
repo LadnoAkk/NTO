@@ -9,7 +9,7 @@
       <DataGrid.Columns>
         <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
         <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
-        <DataGridTextColumn Header="Data" Binding="{Binding Data}"/>
+        <DataGridTextColumn Header="Date" Binding="{Binding Data}"/>
         <DataGridTextColumn Header="Type" Binding="{Binding Type.Name}"/>
       </DataGrid.Columns>
     </DataGrid>

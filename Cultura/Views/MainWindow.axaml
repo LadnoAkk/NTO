@@ -24,7 +24,7 @@
         </TabItem>
         <TabItem Header="Образовательное">
           <TabControl>
-
+			  
           </TabControl>
         </TabItem>
         <TabItem Header="Просветительское">
@@ -37,6 +37,31 @@
             </TabItem>
           </TabControl>
         </TabItem>
+		  
+		  <TabItem Header="Заявки">
+			  <TabControl>
+				<ContentControl Name="ApplicationCCP"/>
+			  </TabControl>
+		  </TabItem>
+
+		  <TabItem Header="Помещения">
+			  <TabControl>
+				<ContentControl Name="SpaceCCP"/>
+			  </TabControl>
+		  </TabItem>
+
+		  <TabItem Header="Тип Работы">
+			  <TabControl>
+				<ContentControl Name="WorkCCP"/>
+			  </TabControl>
+		  </TabItem>
+
+		  <TabItem Header="Рабочий стол">
+			  <TabControl>
+				  <ContentControl Name="WorkspaceCCP"/>
+			  </TabControl>
+		  </TabItem>
+		  
       </TabControl.Items>
     </TabControl>
   </Grid>

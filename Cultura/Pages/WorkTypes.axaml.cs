@@ -1,16 +1,16 @@
 using Avalonia.Controls;
+using Avalonia.Styling;
 using Cultura.data;
 using Cultura.Helper;
 using Cultura.Windows;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using static Cultura.Helper.Connect;
 
 namespace Cultura.Pages
 {
-    public partial class EventTypes : UserControl
+    public partial class WorkTypes : UserControl
     {
-        public EventTypes()
+        public WorkTypes()
         {
             InitializeComponent();
             LoadData();
@@ -19,48 +19,40 @@ namespace Cultura.Pages
             EditBtn.Click += EditBtn_Click;
         }
 
-        public void Reload()
-        {
-            LoadData();
-        }
-
         private async void EditBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            var selected = EventTypesDG.SelectedItem as EventType;
+            var selected = WorkTypesDG.SelectedItem as WorkType;
             if (selected != null)
             {
-                AddEventTypeWindow addEventTypeWindow = new AddEventTypeWindow(selected.Id);
-                await addEventTypeWindow.ShowDialog(MainMainWindow);
-                EvType1.Reload();
-                EvType2.Reload();
+                AddWorkTypeWindow addWorkTypeWindow = new AddWorkTypeWindow(selected.Id);
+                await addWorkTypeWindow.ShowDialog(MainMainWindow);
+                LoadData();
             }
         }
 
         private async void AddBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            AddEventTypeWindow addEventTypeWindow = new AddEventTypeWindow(-1);
-            await addEventTypeWindow.ShowDialog(MainMainWindow);
-            EvType1.Reload();
-            EvType2.Reload();
+            AddWorkTypeWindow addWorkTypeWindow = new AddWorkTypeWindow(-1);
+            await addWorkTypeWindow.ShowDialog(MainMainWindow);
+            LoadData();
         }
 
         private async void DeleteBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             if (await ShowQuestion("Вы уверены?") == MsBox.Avalonia.Enums.ButtonResult.Ok)
             {
-                var selected = EventTypesDG.SelectedItem as EventType;
-                Connect.context.EventTypes.Remove(selected);
+                var selected = WorkTypesDG.SelectedItem as WorkType;
+                Connect.context.WorkTypes.Remove(selected);
                 Connect.context.SaveChanges();
-                EvType1.Reload();
-                EvType2.Reload();
+                LoadData();
             }
         }
 
         private void LoadData()
         {
-            context.EventTypes.Load();
-            EventTypesDG.ItemsSource = null;
-            EventTypesDG.ItemsSource = context.EventTypes;
+            context.WorkTypes.Load();
+            WorkTypesDG.ItemsSource = null;
+            WorkTypesDG.ItemsSource = context.WorkTypes;
         }
     }
 }

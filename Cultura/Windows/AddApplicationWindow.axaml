@@ -1,0 +1,69 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Cultura.Windows.AddApplicationWindow"
+        Title="AddApplicationWindow">
+	<UniformGrid Columns="2" Name="MainGrid" Height="300">
+
+		<Label Content="Date" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+		<CalendarDatePicker
+		  Name="DateCdp"
+		  HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Date}"/>
+		
+		<Label Content="Event" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+		<ComboBox Name="EventNameCb" SelectedItem="{Binding Event}"
+				  HorizontalAlignment="Left" VerticalAlignment="Center">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Label Content="{Binding Description}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
+		<Label Content="Work" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+		<ComboBox Name="WorkNameCb" SelectedItem="{Binding Work}"
+				  HorizontalAlignment="Left" VerticalAlignment="Center">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Label Content="{Binding Name}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
+		<Label Content="Space" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+		<ComboBox Name="SpaceNameCb" SelectedItem="{Binding Space}"
+				  HorizontalAlignment="Left" VerticalAlignment="Center">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Label Content="{Binding Name}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
+		<Label Content="Timing" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+		<CalendarDatePicker
+		  Name="TimingCdp"
+		  HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Timing}"/>
+
+		<Label Content="Description" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+		<TextBox HorizontalAlignment="Left" VerticalAlignment="Center"
+				 Text="{Binding Description}"/>
+		
+		<Label Content="Status" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+		<ComboBox Name="StatusNameCb" SelectedItem="{Binding Status}"
+				  HorizontalAlignment="Left" VerticalAlignment="Center">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Label Content="{Binding Name}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		
+		<Button Name="OkBtn" Content="Ok" Width="70" Height="30" HorizontalContentAlignment="Center"
+				HorizontalAlignment="Right"/>
+		<Button Name="DiscardBtn" Content="Discard" Width="70" Height="30" HorizontalContentAlignment="Center"
+				HorizontalAlignment="Left"/>
+	</UniformGrid>
+</Window>
