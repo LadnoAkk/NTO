@@ -20,6 +20,7 @@ namespace Cultura.Pages
             AddBtn.Click += AddBtn_Click;
             EditBtn.Click += EditBtn_Click;
         }
+        
 
         private async void EditBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
@@ -47,7 +48,6 @@ namespace Cultura.Pages
                 Connect.context.Applications.Remove(selected);
                 Connect.context.SaveChanges();
                 LoadData();
-                OrigReApp.LoadData();
             }
         }
 
@@ -68,7 +68,7 @@ namespace Cultura.Pages
             }
         }
 
-        public void LoadData()
+        private void LoadData()
         {
             context.Applications.Load();
             context.Events.Load();

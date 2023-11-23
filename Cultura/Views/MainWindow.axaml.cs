@@ -36,8 +36,5 @@ public partial class MainWindow : Window
 
         var work = new WorkTypes();
         WorkCCP.Content = work;
-
-        OrigApp = app;
-        OrigReApp = reApp;
     }
 }
