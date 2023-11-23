@@ -17,5 +17,10 @@
 				<DataGridTextColumn Header="Status" Binding="{Binding Status.Name}"/>
 			</DataGrid.Columns>
 		</DataGrid>
+		<StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+			<Button Name="RefreshBtn" Content="Refresh" Height="30"
+					Width="70" HorizontalContentAlignment="Center"
+					VerticalContentAlignment="Center"/>
+		</StackPanel>
 	</Grid>
 </UserControl>

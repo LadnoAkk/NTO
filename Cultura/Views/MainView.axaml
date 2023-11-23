@@ -6,9 +6,4 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Cultura.Views.MainView"
              x:DataType="vm:MainViewModel">
- <Grid>
-  <Button Name="Leave" VerticalAlignment="Top" HorizontalAlignment="Right"
-          Background="Red" Height="30" Width="70" Content="leave"
-          HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
- </Grid>
 </UserControl>

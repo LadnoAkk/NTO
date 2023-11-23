@@ -16,6 +16,12 @@ namespace Cultura.Pages
         {
             InitializeComponent();
             LoadData();
+            RefreshBtn.Click += RefreshBtn_Click;
+        }
+
+        private void RefreshBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            LoadData();
         }
 
         private void LoadData()
