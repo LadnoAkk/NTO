@@ -18,6 +18,11 @@ namespace Cultura.Pages
             EditBtn.Click += EditBtn_Click;
         }
 
+        public void Reload()
+        {
+            LoadData();
+        }
+
         private async void EditBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             var selected = SpacesDG.SelectedItem as Space;
@@ -25,7 +30,9 @@ namespace Cultura.Pages
             {
                 AddSpaceWindow AddSpaceWindow = new AddSpaceWindow(selected.Id);
                 await AddSpaceWindow.ShowDialog(MainMainWindow);
-                LoadData();
+                Sp1.Reload();
+                Sp2.Reload();
+                Sp3.Reload();
             }
         }
 
@@ -33,7 +40,9 @@ namespace Cultura.Pages
         {
             AddSpaceWindow AddSpaceWindow = new AddSpaceWindow(-1);
             await AddSpaceWindow.ShowDialog(MainMainWindow);
-            LoadData();
+            Sp1.Reload();
+            Sp2.Reload();
+            Sp3.Reload();
         }
 
         private async void DeleteBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -43,7 +52,9 @@ namespace Cultura.Pages
                 var selected = SpacesDG.SelectedItem as Space;
                 Connect.context.Spaces.Remove(selected);
                 Connect.context.SaveChanges();
-                LoadData();
+                Sp1.Reload();
+                Sp2.Reload();
+                Sp3.Reload();
             }
         }
 

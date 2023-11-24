@@ -19,6 +19,11 @@ namespace Cultura.Pages
             EditBtn.Click += EditBtn_Click;
         }
 
+        public void Reload()
+        {
+            LoadData();
+        }
+
         private async void EditBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             var selected = WorkTypesDG.SelectedItem as WorkType;
@@ -26,7 +31,8 @@ namespace Cultura.Pages
             {
                 AddWorkTypeWindow addWorkTypeWindow = new AddWorkTypeWindow(selected.Id);
                 await addWorkTypeWindow.ShowDialog(MainMainWindow);
-                LoadData();
+                Work1.Reload();
+                Work2.Reload();
             }
         }
 
@@ -34,7 +40,8 @@ namespace Cultura.Pages
         {
             AddWorkTypeWindow addWorkTypeWindow = new AddWorkTypeWindow(-1);
             await addWorkTypeWindow.ShowDialog(MainMainWindow);
-            LoadData();
+            Work1.Reload();
+            Work2.Reload();
         }
 
         private async void DeleteBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -44,7 +51,8 @@ namespace Cultura.Pages
                 var selected = WorkTypesDG.SelectedItem as WorkType;
                 Connect.context.WorkTypes.Remove(selected);
                 Connect.context.SaveChanges();
-                LoadData();
+                Work1.Reload();
+                Work2.Reload();
             }
         }
 

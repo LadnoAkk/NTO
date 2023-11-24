@@ -48,8 +48,8 @@
 		  HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Timing}"/>
 
 		<Label Content="Description" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-		<TextBox HorizontalAlignment="Left" VerticalAlignment="Center"
-				 Text="{Binding Description}"/>
+		<TextBox HorizontalAlignment="Left" VerticalAlignment="Center" AcceptsReturn="True" TextWrapping="Wrap"
+				 Width="180" Text="{Binding Description}"/>
 		
 		<Label Content="Status" HorizontalAlignment="Right" VerticalAlignment="Center"/>
 		<ComboBox Name="StatusNameCb" SelectedItem="{Binding Status}"

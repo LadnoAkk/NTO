@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Cultura.data;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using static Cultura.Helper.Connect;
 
@@ -26,13 +27,20 @@ namespace Cultura.Windows
 
         private void OkBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            var sp = (Space)MainGrid.DataContext;
-            if (_id == -1)
+            try
             {
-                context.Spaces.Add(sp);
+                var sp = (Space)MainGrid.DataContext;
+                if (_id == -1)
+                {
+                    context.Spaces.Add(sp);
+                }
+                context.SaveChanges();
+                Close();
             }
-            context.SaveChanges();
-            Close();
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void LoadData()

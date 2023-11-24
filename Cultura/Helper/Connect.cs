@@ -16,6 +16,15 @@ namespace Cultura.Helper
         public static CulturnaBasaContext context = new CulturnaBasaContext();
         public static Window MainMainWindow = null;
 
+        public static Spaces Sp1;
+        public static Spaces Sp2;
+        public static Spaces Sp3;
+        public static WorkTypes Work1;
+        public static WorkTypes Work2;
+        public static Applications App1;
+        public static Applications App2;
+        public static ReApplications ReApp1;
+        public static ReApplications ReApp2;
         public static Events Ev1;
         public static Events Ev2;
         public static EventTypes EvType1;

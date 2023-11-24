@@ -27,13 +27,21 @@ namespace Cultura.Windows
 
         private void OkBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            var ev = (EventType)MainGrid.DataContext;
-            if (_id == -1)
+            try
             {
-                context.EventTypes.Add(ev);
+                var ev = (EventType)MainGrid.DataContext;
+                if (_id == -1)
+                {
+                    context.EventTypes.Add(ev);
+                }
+                context.SaveChanges();
+                Close();
             }
-            context.SaveChanges();
-            Close();
+            catch (Exception ex)
+            {
+
+            }
+
         }
 
         private void LoadData()

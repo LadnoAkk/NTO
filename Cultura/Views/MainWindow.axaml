@@ -20,11 +20,26 @@
             <TabItem Header="Тип Мероприятия">
               <ContentControl Name="TypeCCR"/>
             </TabItem>
-          </TabControl>
+            <TabItem Header="Заявки">
+              <ContentControl Name="ApplicationCCR"/>
+            </TabItem>
+
+            <TabItem Header="Помещения">
+              <ContentControl Name="SpaceCCR"/>
+            </TabItem>
+            <TabItem Header="Тип Работы">
+              <ContentControl Name="WorkCCR"/>
+            </TabItem>
+            <TabItem Header="Рабочий стол">
+              <ContentControl Name="WorkspaceCCR"/>
+            </TabItem>
+          </TabControl>          
         </TabItem>
         <TabItem Header="Образовательное">
           <TabControl>
-			  
+              <TabItem Header="Помещения">
+                  <ContentControl Name="SpaceCCO"/>
+              </TabItem>
           </TabControl>
         </TabItem>
         <TabItem Header="Просветительское">
@@ -35,33 +50,23 @@
             <TabItem Header="Тип Мероприятия">
               <ContentControl Name="TypeCCP"/>
             </TabItem>
-          </TabControl>
+            <TabItem Header="Заявки">
+              <ContentControl Name="ApplicationCCP"/>
+            </TabItem>
+
+            <TabItem Header="Помещения">
+              <ContentControl Name="SpaceCCP"/>
+            </TabItem>
+
+            <TabItem Header="Тип Работы">
+              <ContentControl Name="WorkCCP"/>
+            </TabItem>
+
+            <TabItem Header="Рабочий стол">
+              <ContentControl Name="WorkspaceCCP"/>
+            </TabItem>
+          </TabControl>        
         </TabItem>
-		  
-		  <TabItem Header="Заявки">
-			  <TabControl>
-				<ContentControl Name="ApplicationCCP"/>
-			  </TabControl>
-		  </TabItem>
-
-		  <TabItem Header="Помещения">
-			  <TabControl>
-				<ContentControl Name="SpaceCCP"/>
-			  </TabControl>
-		  </TabItem>
-
-		  <TabItem Header="Тип Работы">
-			  <TabControl>
-				<ContentControl Name="WorkCCP"/>
-			  </TabControl>
-		  </TabItem>
-
-		  <TabItem Header="Рабочий стол">
-			  <TabControl>
-				  <ContentControl Name="WorkspaceCCP"/>
-			  </TabControl>
-		  </TabItem>
-		  
       </TabControl.Items>
     </TabControl>
   </Grid>

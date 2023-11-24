@@ -20,7 +20,11 @@ namespace Cultura.Pages
             AddBtn.Click += AddBtn_Click;
             EditBtn.Click += EditBtn_Click;
         }
-        
+
+        public void Reload()
+        {
+            LoadData();
+        }
 
         private async void EditBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
@@ -29,7 +33,8 @@ namespace Cultura.Pages
             {
                 AddApplicationWindow addApplicationWindow = new AddApplicationWindow(selected.Id);
                 await addApplicationWindow.ShowDialog(MainMainWindow);
-                LoadData();
+                App1.Reload();
+                App2.Reload();
             }
         }
 
@@ -37,7 +42,8 @@ namespace Cultura.Pages
         {
             AddApplicationWindow addApplicationWindow = new AddApplicationWindow(-1);
             await addApplicationWindow.ShowDialog(MainMainWindow);
-            LoadData();
+            App1.Reload();
+            App2.Reload();
         }
 
         private async void DeleteBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -47,7 +53,8 @@ namespace Cultura.Pages
                 var selected = ApplicationsDG.SelectedItem as Application;
                 Connect.context.Applications.Remove(selected);
                 Connect.context.SaveChanges();
-                LoadData();
+                App1.Reload();
+                App2.Reload();
             }
         }
 
