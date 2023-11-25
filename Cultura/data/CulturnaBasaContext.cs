@@ -29,7 +29,7 @@ public partial class CulturnaBasaContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlite("data source =C:.\\Database\\CulturnaBasa");
+        => optionsBuilder.UseSqlite("data source =C:\\Users\\niks9\\source\\repos\\NTO\\Cultura\\Database\\CulturnaBasa");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -61,6 +61,7 @@ public partial class CulturnaBasaContext : DbContext
         modelBuilder.Entity<Event>(entity =>
         {
             entity.Property(e => e.Data).HasColumnType("TEXT (12)");
+            entity.Property(e => e.Description).HasColumnType("TEXT (200)");
 
             entity.HasOne(d => d.Type).WithMany(p => p.Events)
                 .HasForeignKey(d => d.TypeId)
