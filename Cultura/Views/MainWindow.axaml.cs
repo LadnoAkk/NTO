@@ -55,5 +55,12 @@ public partial class MainWindow : Window
         WorkCCR.Content = work1;
         Work1 = work;
         Work2 = work1;
+
+        var res = new Reservations();
+        var res1 = new Reservations();
+        ReservationCCP.Content = res;
+        ReservationCCR.Content = res1;
+        Res1 = res;
+        Res2 = res1;
     }
 }

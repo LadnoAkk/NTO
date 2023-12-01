@@ -1,0 +1,53 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Cultura.Windows.AddReservationWindow"
+        Title="AddReservationWindow">
+  <UniformGrid Columns="2" Name="MainGrid" Height="300">
+    <Label Content="Create Date" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    <CalendarDatePicker
+      Name="CreateDateCdp"
+      HorizontalAlignment="Left" VerticalAlignment="Center"/>
+    <Label Content="Event" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    <ComboBox Name="EventDescriptionCb" SelectedItem="{Binding Event}"
+              HorizontalAlignment="Left" VerticalAlignment="Center">
+      <ComboBox.ItemTemplate>
+        <DataTemplate>
+          <Label Content="{Binding Description}"/>
+        </DataTemplate>
+      </ComboBox.ItemTemplate>
+    </ComboBox>
+    <Label Content="Beginning Date" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    <CalendarDatePicker
+      Name="BeginningDateCdp"
+      HorizontalAlignment="Left" VerticalAlignment="Center"/>
+    <Label Content="Beginning Time" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    <TimePicker 
+      Name="BeginningTimeTp" HorizontalAlignment="Left" VerticalAlignment="Center" />
+    <Label Content="Ending Date" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    <CalendarDatePicker
+      Name="EndingDateCdp"
+      HorizontalAlignment="Left" VerticalAlignment="Center"/>
+    <Label Content="Ending Time" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    <TimePicker
+      Name="EndingTimeTp" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+    <Label Content="Space" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    <ComboBox Name="SpaceNameCb" SelectedItem="{Binding Space}"
+              HorizontalAlignment="Left" VerticalAlignment="Center">
+      <ComboBox.ItemTemplate>
+        <DataTemplate>
+          <Label Content="{Binding Name}"/>
+        </DataTemplate>
+      </ComboBox.ItemTemplate>
+    </ComboBox>
+    <Label Content="Comment" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Height="60" AcceptsReturn="True" TextWrapping="Wrap"
+             Width="180" Text="{Binding Comments}"/>
+    <Button Name="OkBtn" Content="Ok" Width="70" Height="30" HorizontalContentAlignment="Center"
+            HorizontalAlignment="Right"/>
+    <Button Name="DiscardBtn" Content="Discard" Width="70" Height="30" HorizontalContentAlignment="Center"
+            HorizontalAlignment="Left"/>
+  </UniformGrid>
+</Window>

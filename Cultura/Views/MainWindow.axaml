@@ -33,6 +33,9 @@
             <TabItem Header="Рабочий стол">
               <ContentControl Name="WorkspaceCCR"/>
             </TabItem>
+            <TabItem Header="Бронирование">
+              <ContentControl Name="ReservationCCR"/>
+            </TabItem>
           </TabControl>          
         </TabItem>
         <TabItem Header="Образовательное">
@@ -65,6 +68,11 @@
             <TabItem Header="Рабочий стол">
               <ContentControl Name="WorkspaceCCP"/>
             </TabItem>
+
+            <TabItem Header="Бронирование">
+              <ContentControl Name="ReservationCCP"/>
+            </TabItem>
+            
           </TabControl>        
         </TabItem>
       </TabControl.Items>

@@ -10,4 +10,6 @@ public partial class Space
     public string Name { get; set; } = null!;
 
     public virtual ICollection<Application> Applications { get; } = new List<Application>();
+
+    public virtual ICollection<Reservation> Reservations { get; } = new List<Reservation>();
 }

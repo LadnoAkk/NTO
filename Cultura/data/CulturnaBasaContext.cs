@@ -21,6 +21,8 @@ public partial class CulturnaBasaContext : DbContext
 
     public virtual DbSet<EventType> EventTypes { get; set; }
 
+    public virtual DbSet<Reservation> Reservations { get; set; }
+
     public virtual DbSet<Space> Spaces { get; set; }
 
     public virtual DbSet<Status> Statuses { get; set; }
@@ -29,7 +31,7 @@ public partial class CulturnaBasaContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlite("data source =C:\\Users\\niks9\\source\\repos\\NTO\\Cultura\\Database\\CulturnaBasa");
+        => optionsBuilder.UseSqlite("data source =C:\\Users\\1\\source\\repos\\NTO\\Cultura\\Database\\CulturnaBasa");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -73,6 +75,26 @@ public partial class CulturnaBasaContext : DbContext
             entity.ToTable("EventType");
 
             entity.Property(e => e.Name).HasColumnType("TEXT (30)");
+        });
+
+        modelBuilder.Entity<Reservation>(entity =>
+        {
+            entity.ToTable("Reservation");
+
+            entity.Property(e => e.BeginningDate).HasColumnType("TEXT (12)");
+            entity.Property(e => e.BeginningTime).HasColumnType("TEXT (7)");
+            entity.Property(e => e.Comments).HasColumnType("TEXT (200)");
+            entity.Property(e => e.CreateDate).HasColumnType("TEXT (12)");
+            entity.Property(e => e.EndingDate).HasColumnType("TEXT (12)");
+            entity.Property(e => e.EndingTime).HasColumnType("TEXT (7)");
+
+            entity.HasOne(d => d.Event).WithMany(p => p.Reservations)
+                .HasForeignKey(d => d.EventId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.Space).WithMany(p => p.Reservations)
+                .HasForeignKey(d => d.SpaceId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
         modelBuilder.Entity<Space>(entity =>

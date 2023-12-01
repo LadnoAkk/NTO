@@ -16,7 +16,7 @@
       </ComboBox.ItemTemplate>
     </ComboBox>
     <Label Content="Description" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" AcceptsReturn="True" TextWrapping="Wrap"
+    <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Height="60" AcceptsReturn="True" TextWrapping="Wrap"
              Width="180" Text="{Binding Description}"/>
     <Label Content="Date" HorizontalAlignment="Right" VerticalAlignment="Center"/>
     <CalendarDatePicker 

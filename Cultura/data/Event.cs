@@ -15,5 +15,7 @@ public partial class Event
 
     public virtual ICollection<Application> Applications { get; } = new List<Application>();
 
+    public virtual ICollection<Reservation> Reservations { get; } = new List<Reservation>();
+
     public virtual EventType Type { get; set; } = null!;
 }
