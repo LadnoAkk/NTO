@@ -5,6 +5,7 @@ using Cultura.Helper;
 using Cultura.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System;
 using static Cultura.Helper.Connect;
 
 namespace Cultura.Pages
@@ -48,13 +49,20 @@ namespace Cultura.Pages
 
         private async void DeleteBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            if (await ShowQuestion("Вы уверены?") == MsBox.Avalonia.Enums.ButtonResult.Ok)
+            try
             {
-                var selected = ApplicationsDG.SelectedItem as Application;
-                Connect.context.Applications.Remove(selected);
-                Connect.context.SaveChanges();
-                App1.Reload();
-                App2.Reload();
+                if (await ShowQuestion("Вы уверены?") == MsBox.Avalonia.Enums.ButtonResult.Ok)
+                {
+                    var selected = ApplicationsDG.SelectedItem as Application;
+                    Connect.context.Applications.Remove(selected);
+                    Connect.context.SaveChanges();
+                    App1.Reload();
+                    App2.Reload();
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 

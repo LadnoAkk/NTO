@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Cultura.Pages.Circles">
+  <Grid RowDefinitions="100, *, 100">
+    <DataGrid Name="CirclesDG" Grid.Row="1" IsReadOnly="True">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+        <DataGridTextColumn Header="Description" Binding="{Binding Name}"/>
+        <DataGridTextColumn Header="Date" Binding="{Binding WorkBeginDate}"/>
+        <DataGridTextColumn Header="Circle Type" Binding="{Binding Type.Name}"/>
+        <DataGridTextColumn Header="Space Name" Binding="{Binding Space.Name}"/>
+        <DataGridTextColumn Header="First Day" Binding="{Binding FirstVarDayNavigation.Day}"/>
+        <DataGridTextColumn Header="Second Day" Binding="{Binding SecondVarDayNavigation.Day}"/>
+        <DataGridTextColumn Header="Third Day" Binding="{Binding ThirdVarDayNavigation.Day}"/>
+        <DataGridTextColumn Header="Beginning Time" Binding="{Binding BeginningTime}"/>
+        <DataGridTextColumn Header="Ending Time" Binding="{Binding EndingTime}"/>
+        <DataGridTextColumn Header="Teacher" Binding="{Binding Teacher.Name}"/>
+      </DataGrid.Columns>
+    </DataGrid>
+    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+      <Button Name="AddBtn" Content="Add" Height="30"
+              Width="70" HorizontalContentAlignment="Center"
+              VerticalContentAlignment="Center"/>
+      <Button Name="EditBtn" Content="Edit" Height="30"
+              Width="70" HorizontalContentAlignment="Center"
+              VerticalContentAlignment="Center"/>
+      <Button Name="DeleteBtn" Content="Delete" Height="30"
+              Width="70" Background="Red" HorizontalContentAlignment="Center"
+              VerticalContentAlignment="Center"/>
+    </StackPanel>
+  </Grid>
+</UserControl>

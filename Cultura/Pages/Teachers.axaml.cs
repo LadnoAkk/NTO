@@ -3,15 +3,14 @@ using Cultura.data;
 using Cultura.Helper;
 using Cultura.Windows;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 using System;
 using static Cultura.Helper.Connect;
 
 namespace Cultura.Pages
 {
-    public partial class Reservations : UserControl
+    public partial class Teachers : UserControl
     {
-        public Reservations()
+        public Teachers()
         {
             InitializeComponent();
             LoadData();
@@ -20,29 +19,22 @@ namespace Cultura.Pages
             EditBtn.Click += EditBtn_Click;
         }
 
-        public void Reload()
-        {
-            LoadData();
-        }
-
         private async void EditBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            var selected = ReservationsDG.SelectedItem as Reservation;
+            var selected = TeachersDG.SelectedItem as Teacher;
             if (selected != null)
             {
-                AddReservationWindow addReservationWindow = new AddReservationWindow(selected.Id);
-                await addReservationWindow.ShowDialog(MainMainWindow);
-                Res1.Reload();
-                Res2.Reload();
+                AddTeacherWindow addTeacherWindow = new AddTeacherWindow(selected.Id);
+                await addTeacherWindow.ShowDialog(MainMainWindow);
+                LoadData();
             }
         }
 
         private async void AddBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            AddReservationWindow addReservationWindow = new AddReservationWindow(-1);
-            await addReservationWindow.ShowDialog(MainMainWindow);
-            Res1.Reload();
-            Res2.Reload();
+            AddTeacherWindow addTeacherWindow = new AddTeacherWindow(-1);
+            await addTeacherWindow.ShowDialog(MainMainWindow);
+            LoadData();
         }
 
         private async void DeleteBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -51,26 +43,23 @@ namespace Cultura.Pages
             {
                 if (await ShowQuestion("Вы уверены?") == MsBox.Avalonia.Enums.ButtonResult.Ok)
                 {
-                    var selected = ReservationsDG.SelectedItem as Reservation;
-                    Connect.context.Reservations.Remove(selected);
+                    var selected = TeachersDG.SelectedItem as Teacher;
+                    Connect.context.Teachers.Remove(selected);
                     Connect.context.SaveChanges();
-                    Res1.Reload();
-                    Res2.Reload();
+                    LoadData();
                 }
-            } 
+            }
             catch (Exception ex)
             {
-                
+
             }
         }
 
         private void LoadData()
         {
-            context.Reservations.Load();
-            context.Spaces.Load();
-            context.Events.Load();
-            ReservationsDG.ItemsSource = null;
-            ReservationsDG.ItemsSource = context.Reservations;
+            context.Teachers.Load();
+            TeachersDG.ItemsSource = null;
+            TeachersDG.ItemsSource = context.Teachers;
         }
     }
 }

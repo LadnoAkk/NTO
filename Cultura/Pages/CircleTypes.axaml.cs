@@ -8,9 +8,9 @@ using static Cultura.Helper.Connect;
 
 namespace Cultura.Pages
 {
-    public partial class Spaces : UserControl
+    public partial class CircleTypes : UserControl
     {
-        public Spaces()
+        public CircleTypes()
         {
             InitializeComponent();
             LoadData();
@@ -19,31 +19,22 @@ namespace Cultura.Pages
             EditBtn.Click += EditBtn_Click;
         }
 
-        public void Reload()
-        {
-            LoadData();
-        }
-
         private async void EditBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            var selected = SpacesDG.SelectedItem as Space;
+            var selected = CircleTypesDG.SelectedItem as CircleType;
             if (selected != null)
             {
-                AddSpaceWindow AddSpaceWindow = new AddSpaceWindow(selected.Id);
-                await AddSpaceWindow.ShowDialog(MainMainWindow);
-                Sp1.Reload();
-                Sp2.Reload();
-                Sp3.Reload();
+                AddCircleTypeWindow addCircleTypeWindow = new AddCircleTypeWindow(selected.Id);
+                await addCircleTypeWindow.ShowDialog(MainMainWindow);
+                LoadData();
             }
         }
 
         private async void AddBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            AddSpaceWindow AddSpaceWindow = new AddSpaceWindow(-1);
-            await AddSpaceWindow.ShowDialog(MainMainWindow);
-            Sp1.Reload();
-            Sp2.Reload();
-            Sp3.Reload();
+            AddCircleTypeWindow addCircleTypeWindow = new AddCircleTypeWindow(-1);
+            await addCircleTypeWindow.ShowDialog(MainMainWindow);
+            LoadData();
         }
 
         private async void DeleteBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -52,25 +43,23 @@ namespace Cultura.Pages
             {
                 if (await ShowQuestion("Вы уверены?") == MsBox.Avalonia.Enums.ButtonResult.Ok)
                 {
-                    var selected = SpacesDG.SelectedItem as Space;
-                    Connect.context.Spaces.Remove(selected);
+                    var selected = CircleTypesDG.SelectedItem as CircleType;
+                    Connect.context.CircleTypes.Remove(selected);
                     Connect.context.SaveChanges();
-                    Sp1.Reload();
-                    Sp2.Reload();
-                    Sp3.Reload();
+                    LoadData();
                 }
             }
             catch (Exception ex)
-            {
-                
+            { 
+
             }
         }
 
         private void LoadData()
         {
-            context.Spaces.Load();
-            SpacesDG.ItemsSource = null;
-            SpacesDG.ItemsSource = context.Spaces;
+            context.CircleTypes.Load();
+            CircleTypesDG.ItemsSource = null;
+            CircleTypesDG.ItemsSource = context.CircleTypes;
         }
     }
 }

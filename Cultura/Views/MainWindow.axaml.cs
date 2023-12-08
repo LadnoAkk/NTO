@@ -62,5 +62,11 @@ public partial class MainWindow : Window
         ReservationCCR.Content = res1;
         Res1 = res;
         Res2 = res1;
+
+        CircleTypeCCO.Content = new CircleTypes();
+
+        TeacherCCO.Content = new Teachers();
+
+        CircleCCO.Content = new Circles();
     }
 }

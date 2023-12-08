@@ -43,6 +43,15 @@
               <TabItem Header="Помещения">
                   <ContentControl Name="SpaceCCO"/>
               </TabItem>
+            <TabItem Header="Педагоги">
+              <ContentControl Name="TeacherCCO"/>
+            </TabItem>
+            <TabItem Header="Типы Кружков">
+              <ContentControl Name="CircleTypeCCO"/>
+            </TabItem>
+            <TabItem Header="Кружки">
+              <ContentControl Name="CircleCCO"/>
+            </TabItem>
           </TabControl>
         </TabItem>
         <TabItem Header="Просветительское">

@@ -9,9 +9,9 @@ using static Cultura.Helper.Connect;
 
 namespace Cultura.Pages
 {
-    public partial class Reservations : UserControl
+    public partial class Circles : UserControl
     {
-        public Reservations()
+        public Circles()
         {
             InitializeComponent();
             LoadData();
@@ -20,29 +20,22 @@ namespace Cultura.Pages
             EditBtn.Click += EditBtn_Click;
         }
 
-        public void Reload()
-        {
-            LoadData();
-        }
-
         private async void EditBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            var selected = ReservationsDG.SelectedItem as Reservation;
+            var selected = CirclesDG.SelectedItem as Circle;
             if (selected != null)
             {
-                AddReservationWindow addReservationWindow = new AddReservationWindow(selected.Id);
-                await addReservationWindow.ShowDialog(MainMainWindow);
-                Res1.Reload();
-                Res2.Reload();
+                AddCircleWindow addCircleWindow = new AddCircleWindow(selected.Id);
+                await addCircleWindow.ShowDialog(MainMainWindow);
+                LoadData();
             }
         }
 
         private async void AddBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            AddReservationWindow addReservationWindow = new AddReservationWindow(-1);
-            await addReservationWindow.ShowDialog(MainMainWindow);
-            Res1.Reload();
-            Res2.Reload();
+            AddCircleWindow addCircleWindow = new AddCircleWindow(-1);
+            await addCircleWindow.ShowDialog(MainMainWindow);
+            LoadData();
         }
 
         private async void DeleteBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -51,26 +44,27 @@ namespace Cultura.Pages
             {
                 if (await ShowQuestion("Вы уверены?") == MsBox.Avalonia.Enums.ButtonResult.Ok)
                 {
-                    var selected = ReservationsDG.SelectedItem as Reservation;
-                    Connect.context.Reservations.Remove(selected);
+                    var selected = CirclesDG.SelectedItem as Circle;
+                    Connect.context.Circles.Remove(selected);
                     Connect.context.SaveChanges();
-                    Res1.Reload();
-                    Res2.Reload();
+                    LoadData();
                 }
-            } 
+            }
             catch (Exception ex)
             {
-                
+
             }
         }
 
         private void LoadData()
         {
-            context.Reservations.Load();
+            context.Circles.Load();
+            context.CircleTypes.Load();
             context.Spaces.Load();
-            context.Events.Load();
-            ReservationsDG.ItemsSource = null;
-            ReservationsDG.ItemsSource = context.Reservations;
+            context.Weeks.Load();
+            context.Teachers.Load();
+            CirclesDG.ItemsSource = null;
+            CirclesDG.ItemsSource = context.Circles;
         }
     }
 }
