@@ -37,7 +37,7 @@
     </ComboBox>
 
     <Label Content="Variants of calendar" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-    <ComboBox Name="VariantsOfCalendarCb"
+    <ComboBox Name="VariantsOfCalendarCb" SelectedIndex="0"
 				  HorizontalAlignment="Left" VerticalAlignment="Center">
       <ComboBox.Items>
         <ComboBoxItem Content="Один раз в неделю"/>
@@ -56,8 +56,8 @@
       </ComboBox.ItemTemplate>
     </ComboBox>
 
-    <Label Content="Second Day" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-    <ComboBox Name="SecondDayCb" SelectedItem="{Binding SecondVarDayNavigation}"
+    <Label Name="SecondDayLb" Content="Second Day" HorizontalAlignment="Right" VerticalAlignment="Center" IsVisible="False"/>
+    <ComboBox Name="SecondDayCb" SelectedItem="{Binding SecondVarDayNavigation}" IsVisible="False"
 				  HorizontalAlignment="Left" VerticalAlignment="Center">
       <ComboBox.ItemTemplate>
         <DataTemplate>
@@ -66,8 +66,8 @@
       </ComboBox.ItemTemplate>
     </ComboBox>
 
-    <Label Content="Third Day" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-    <ComboBox Name="ThirdDayCb" SelectedItem="{Binding ThirdVarDayNavigation}"
+    <Label Name="ThirdDayLb" Content="Third Day" HorizontalAlignment="Right" VerticalAlignment="Center" IsVisible="False"/>
+    <ComboBox Name="ThirdDayCb" SelectedItem="{Binding ThirdVarDayNavigation}" IsVisible="False"
 				  HorizontalAlignment="Left" VerticalAlignment="Center">
       <ComboBox.ItemTemplate>
         <DataTemplate>

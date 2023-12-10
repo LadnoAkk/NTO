@@ -5,7 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Cultura.Pages.EventTypes">
 	<Grid RowDefinitions="100, *, 100">
-		<DataGrid Name="EventTypesDG" Grid.Row="1">
+		<DataGrid Name="EventTypesDG" Grid.Row="1" IsReadOnly="True">
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
 				<DataGridTextColumn Header="Name" Binding="{Binding Name}"/>

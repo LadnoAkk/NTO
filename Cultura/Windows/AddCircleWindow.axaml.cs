@@ -15,9 +15,38 @@ namespace Cultura.Windows
         {
             InitializeComponent();
             _id = id;
-            LoadData();
+            
+            VariantsOfCalendarCb.SelectionChanged += VariantsOfCalendarCb_SelectionChanged;
             OkBtn.Click += OkBtn_Click;
             DiscardBtn.Click += DiscardBtn_Click;
+            LoadData();
+        }
+
+        private void VariantsOfCalendarCb_SelectionChanged(object? sender, SelectionChangedEventArgs e)
+        {
+            ThirdDayCb.IsVisible = false;
+            ThirdDayLb.IsVisible = false;
+            SecondDayCb.IsVisible = false;
+            SecondDayLb.IsVisible = false;
+            var circle = (Circle)MainGrid.DataContext;
+            if (VariantsOfCalendarCb.SelectedIndex == 0) 
+            {
+                circle.SecondVarDayNavigation = null;
+                circle.ThirdVarDayNavigation = null;
+            }
+            if (VariantsOfCalendarCb.SelectedIndex == 1)
+            {
+                SecondDayCb.IsVisible = true;
+                SecondDayLb.IsVisible = true;
+                circle.ThirdVarDayNavigation = null;
+            }
+            if (VariantsOfCalendarCb.SelectedIndex == 2)
+            {
+                SecondDayCb.IsVisible = true;
+                SecondDayLb.IsVisible = true;
+                ThirdDayCb.IsVisible = true;
+                ThirdDayLb.IsVisible = true;
+            }
         }
 
         private void DiscardBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -67,10 +96,22 @@ namespace Cultura.Windows
                 BeginningTimeTp.SelectedTime = TimeSpan.Parse(circa.BeginningTime);
                 EndingTimeTp.SelectedTime = TimeSpan.Parse(circa.EndingTime);
                 MainGrid.DataContext = circa;
+                if (circa.ThirdVarDayNavigation != null) 
+                {
+                    VariantsOfCalendarCb.SelectedIndex = 2;
+                }
+                else if (circa.SecondVarDayNavigation != null)
+                {
+                    VariantsOfCalendarCb.SelectedIndex = 1;
+                }
             }
             else
             {
                 MainGrid.DataContext = new Circle();
+                SpaceCb.SelectedIndex = 0;
+                TeacherCb.SelectedIndex = 0;
+                CircleTypeCb.SelectedIndex = 0;
+                WorkBeginDateCdp.SelectedDate = DateTime.Now;
             }
 
         }
