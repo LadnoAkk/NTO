@@ -5,6 +5,7 @@ using Cultura.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Linq;
 using static Cultura.Helper.Connect;
 
 namespace Cultura.Pages
@@ -14,10 +15,32 @@ namespace Cultura.Pages
         public Circles()
         {
             InitializeComponent();
+            fillCircleTypeCb();
             LoadData();
+            CircleTypeCb.SelectionChanged += CircleTypeCb_SelectionChanged;
+            SearchTb.TextChanged += SearchTb_TextChanged;
             DeleteBtn.Click += DeleteBtn_Click;
             AddBtn.Click += AddBtn_Click;
             EditBtn.Click += EditBtn_Click;
+        }
+
+        private void fillCircleTypeCb()
+        {
+            context.CircleTypes.Load();
+            var circleTypes = context.CircleTypes.ToList();
+            circleTypes.Insert(0, new CircleType() { Name = "Все"});
+            CircleTypeCb.ItemsSource = circleTypes;
+            CircleTypeCb.SelectedIndex = 0;
+        }
+
+        private void CircleTypeCb_SelectionChanged(object? sender, SelectionChangedEventArgs e)
+        {
+            LoadData();
+        }
+
+        private void SearchTb_TextChanged(object? sender, TextChangedEventArgs e)
+        {
+            LoadData();
         }
 
         private async void EditBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -64,7 +87,16 @@ namespace Cultura.Pages
             context.Weeks.Load();
             context.Teachers.Load();
             CirclesDG.ItemsSource = null;
-            CirclesDG.ItemsSource = context.Circles;
+            var circles = context.Circles.ToList();
+            if (CircleTypeCb.SelectedIndex != 0)
+            {
+                circles = circles.Where(el => el.Type == CircleTypeCb.SelectedItem as CircleType).ToList();
+            }
+            if (!string.IsNullOrEmpty(SearchTb.Text))
+            {
+                circles = circles.Where(el => el.Name.Contains(SearchTb.Text)).ToList();
+            }
+            CirclesDG.ItemsSource = circles;
         }
     }
 }

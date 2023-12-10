@@ -5,6 +5,18 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Cultura.Pages.Circles">
   <Grid RowDefinitions="100, *, 100">
+	  <StackPanel Orientation="Horizontal">
+		  <Label Content="Поиск" VerticalAlignment="Center"/>
+		  <TextBox Name="SearchTb" Height="30" Width="100" VerticalAlignment="Center"/>
+		  <Label Content="Тип Кружка" VerticalAlignment="Center"/>
+		  <ComboBox Name="CircleTypeCb" Height="30" Width="100" VerticalAlignment="Center">
+			  <ComboBox.ItemTemplate>
+				  <DataTemplate>
+					  <Label Content="{Binding Name}"/>
+				  </DataTemplate>
+			  </ComboBox.ItemTemplate>
+		  </ComboBox>
+	  </StackPanel>
     <DataGrid Name="CirclesDG" Grid.Row="1" IsReadOnly="True">
       <DataGrid.Columns>
         <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
