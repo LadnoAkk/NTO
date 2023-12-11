@@ -36,6 +36,9 @@
             <TabItem Header="Бронирование">
               <ContentControl Name="ReservationCCR"/>
             </TabItem>
+			  <TabItem Header="Сервис Бронирования">
+				  <ContentControl Name="ReservServiceCCR"/>
+			  </TabItem>
           </TabControl>          
         </TabItem>
         <TabItem Header="Образовательное">
@@ -59,6 +62,9 @@
         </TabItem>
         <TabItem Header="Просветительское">
           <TabControl>
+			  <TabItem Header="Сервис Бронирования">
+				  <ContentControl Name="ReservServiceCCP"/>
+			  </TabItem>
             <TabItem Header="Мероприятие">
               <ContentControl Name="EventCCP"/>
             </TabItem>

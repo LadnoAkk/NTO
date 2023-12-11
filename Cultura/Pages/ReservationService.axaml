@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Cultura.Pages.ReservationService">
+	<UniformGrid Columns="2" Name="MainGrid" Height="400">
+		<Label Content="Date" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+		<CalendarDatePicker
+		  Name="DateCdp"
+		  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+		<Label Content="Space" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+		<ComboBox Name="SpaceNameCb" HorizontalAlignment="Left" VerticalAlignment="Center">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Label Content="{Binding Name}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		<Button Name="BigReservBtn" Content="RESERV" Width="250" Height="90" HorizontalContentAlignment="Center"
+				HorizontalAlignment="Right" VerticalContentAlignment="Center"/>
+	</UniformGrid>
+</UserControl>

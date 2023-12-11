@@ -30,7 +30,7 @@ namespace Cultura.Pages
             var selected = ReservationsDG.SelectedItem as Reservation;
             if (selected != null)
             {
-                AddReservationWindow addReservationWindow = new AddReservationWindow(selected.Id);
+                AddReservationWindow addReservationWindow = new AddReservationWindow(selected.Id, -1, -1, DateTime.Now);
                 await addReservationWindow.ShowDialog(MainMainWindow);
                 Res1.Reload();
                 Res2.Reload();
@@ -39,7 +39,7 @@ namespace Cultura.Pages
 
         private async void AddBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            AddReservationWindow addReservationWindow = new AddReservationWindow(-1);
+            AddReservationWindow addReservationWindow = new AddReservationWindow(-1, -1, -1, DateTime.Now);
             await addReservationWindow.ShowDialog(MainMainWindow);
             Res1.Reload();
             Res2.Reload();

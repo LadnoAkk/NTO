@@ -29,7 +29,7 @@ namespace Cultura.Pages
         private async void EditBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             var selected = EventsDG.SelectedItem as Event;
-            if ( selected != null)
+            if (selected != null)
             {
                 AddEventWindow addEventWindow = new AddEventWindow(selected.Id);
                 await addEventWindow.ShowDialog(MainMainWindow);
@@ -65,9 +65,16 @@ namespace Cultura.Pages
             }
         }
 
-        private void ReservBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private async void ReservBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-
+            var selected = EventsDG.SelectedItem as Event;
+            if (selected != null)
+            {
+                AddReservationWindow addReservationWindow = new AddReservationWindow(-1, -1, selected.Id, DateTime.Now);
+                await addReservationWindow.ShowDialog(MainMainWindow);
+                Res1.Reload();
+                Res2.Reload();
+            }
         }
 
         private void LoadData()

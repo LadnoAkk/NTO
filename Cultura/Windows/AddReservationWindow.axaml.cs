@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using Cultura.data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Linq;
 using static Cultura.Helper.Connect;
@@ -10,14 +11,35 @@ namespace Cultura.Windows
     public partial class AddReservationWindow : Window
     {
         private long _id;
+        private long _spaceId;
+        private long _eventId;
 
-        public AddReservationWindow(long id)
+        public AddReservationWindow(long id, long spaceId, long eventId, DateTime date)
         {
             InitializeComponent();
             _id = id;
+            _spaceId = spaceId;
+            _eventId = eventId;
+            BeginningDateCdp.SelectedDate = date;
+            EndingDateCdp.SelectedDate = date;
+            CreateDateCdp.SelectedDate = DateTime.Now;
+            BeginningDateCdp.SelectedDateChanged += BeginningDateCdp_SelectedDateChanged;
+            EndingDateCdp.SelectedDateChanged += EndingDateCdp_SelectedDateChanged;
+            LoadSpaces();
             LoadData();
             OkBtn.Click += OkBtn_Click;
             DiscardBtn.Click += DiscardBtn_Click;
+
+        }
+
+        private void EndingDateCdp_SelectedDateChanged(object? sender, SelectionChangedEventArgs e)
+        {
+            LoadSpaces();
+        }
+
+        private void BeginningDateCdp_SelectedDateChanged(object? sender, SelectionChangedEventArgs e)
+        {
+            LoadSpaces();
         }
 
         private void DiscardBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -48,13 +70,35 @@ namespace Cultura.Windows
             }
         }
 
+        private void LoadSpaces()
+        {            
+            var spaces = context.Spaces.ToList();
+            try
+            {
+                foreach (Reservation r in context.Reservations)
+                {
+                    if (Convert.ToDateTime(r.BeginningDate).Date <= BeginningDateCdp.SelectedDate.Value.Date && Convert.ToDateTime(r.EndingDate).Date >= BeginningDateCdp.SelectedDate.Value.Date ||
+                        Convert.ToDateTime(r.BeginningDate).Date <= EndingDateCdp.SelectedDate.Value.Date && Convert.ToDateTime(r.EndingDate).Date >= EndingDateCdp.SelectedDate.Value.Date)
+                    {
+                        if (spaces.Contains(r.Space))
+                        {
+                            spaces.Remove(r.Space);
+                        }
+                    }
+                }
+            }
+            catch(Exception ex) { }
+            SpaceNameCb.ItemsSource = spaces;
+        }
+
+
         private void LoadData()
         {
             context.Reservations.Load();
             context.Spaces.Load();
             context.Events.Load();
             EventDescriptionCb.ItemsSource = context.Events;
-            SpaceNameCb.ItemsSource = context.Spaces;
+            
 
             if (_id != -1)
             {
@@ -71,6 +115,14 @@ namespace Cultura.Windows
             else
             {
                 MainGrid.DataContext = new Reservation();
+                if (_spaceId != -1)
+                {
+                    SpaceNameCb.SelectedItem = context.Spaces.First(el => el.Id == _spaceId);
+                }
+                if (_eventId != -1)
+                {
+                    EventDescriptionCb.SelectedItem = context.Events.First(el => el.Id == _eventId);
+                }
             }
 
         }

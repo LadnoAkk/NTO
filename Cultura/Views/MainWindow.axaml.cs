@@ -71,5 +71,8 @@ public partial class MainWindow : Window
 
         Tablo1 = new Tablo();
         TabloCCO.Content = Tablo1;
+
+        ReservServiceCCP.Content = new ReservationService();
+        ReservServiceCCR.Content = new ReservationService();
     }
 }

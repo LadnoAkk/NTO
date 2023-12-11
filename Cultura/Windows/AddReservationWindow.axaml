@@ -5,11 +5,11 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Cultura.Windows.AddReservationWindow"
         Title="AddReservationWindow">
-  <UniformGrid Columns="2" Name="MainGrid" Height="300">
+  <UniformGrid Columns="2" Name="MainGrid" Height="400">
     <Label Content="Create Date" HorizontalAlignment="Right" VerticalAlignment="Center"/>
     <CalendarDatePicker
       Name="CreateDateCdp"
-      HorizontalAlignment="Left" VerticalAlignment="Center"/>
+      HorizontalAlignment="Left" VerticalAlignment="Center" IsEnabled="False"/>
     <Label Content="Event" HorizontalAlignment="Right" VerticalAlignment="Center"/>
     <ComboBox Name="EventDescriptionCb" SelectedItem="{Binding Event}"
               HorizontalAlignment="Left" VerticalAlignment="Center">

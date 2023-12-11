@@ -9,6 +9,7 @@
       <DataGrid.Columns>
         <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
         <DataGridTextColumn Header="Create Date" Binding="{Binding CreateDate}"/>
+		<DataGridTextColumn Header="Event Name" Binding="{Binding Event.Description}"/>
         <DataGridTextColumn Header="Beginning Date" Binding="{Binding BeginningDate}"/>
         <DataGridTextColumn Header="Beginning Time" Binding="{Binding BeginningTime}"/>
         <DataGridTextColumn Header="Ending Date" Binding="{Binding EndingDate}"/>
