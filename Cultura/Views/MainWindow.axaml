@@ -52,6 +52,9 @@
             <TabItem Header="Кружки">
               <ContentControl Name="CircleCCO"/>
             </TabItem>
+			  <TabItem Header="Расписание">
+				  <ContentControl Name="TabloCCO"/>
+			  </TabItem>
           </TabControl>
         </TabItem>
         <TabItem Header="Просветительское">

@@ -68,5 +68,8 @@ public partial class MainWindow : Window
         TeacherCCO.Content = new Teachers();
 
         CircleCCO.Content = new Circles();
+
+        Tablo1 = new Tablo();
+        TabloCCO.Content = Tablo1;
     }
 }

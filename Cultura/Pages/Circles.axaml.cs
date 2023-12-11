@@ -51,6 +51,7 @@ namespace Cultura.Pages
                 AddCircleWindow addCircleWindow = new AddCircleWindow(selected.Id);
                 await addCircleWindow.ShowDialog(MainMainWindow);
                 LoadData();
+                Tablo1.LoadData();
             }
         }
 
@@ -59,6 +60,7 @@ namespace Cultura.Pages
             AddCircleWindow addCircleWindow = new AddCircleWindow(-1);
             await addCircleWindow.ShowDialog(MainMainWindow);
             LoadData();
+            Tablo1.LoadData();
         }
 
         private async void DeleteBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -71,6 +73,7 @@ namespace Cultura.Pages
                     Connect.context.Circles.Remove(selected);
                     Connect.context.SaveChanges();
                     LoadData();
+                    Tablo1.LoadData();
                 }
             }
             catch (Exception ex)

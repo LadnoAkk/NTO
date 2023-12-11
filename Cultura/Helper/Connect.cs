@@ -31,6 +31,7 @@ namespace Cultura.Helper
         public static EventTypes EvType2;
         public static Reservations Res1;
         public static Reservations Res2;
+        public static Tablo Tablo1;
 
         public async static Task<MsBox.Avalonia.Enums.ButtonResult> ShowQuestion(string message)
         {
